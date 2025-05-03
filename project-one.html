@@ -12,12 +12,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    /* Mencegah pemilihan teks */
+    /* Mencegah pemilihan teks dan set cursor default */
     body, .no-select {
-      user-select: none;  /* Mencegah teks dipilih */
-      -webkit-user-select: none;  /* Untuk Safari */
-      -moz-user-select: none;  /* Untuk Firefox */
-      -ms-user-select: none;  /* Untuk IE/Edge */
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      cursor: default;
     }
 
     /* Background floating shapes */
@@ -62,22 +63,6 @@
       transition: 0.3s ease;
     }
 
-    .cursor-effect {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      pointer-events: none;
-      background: rgba(0,255,200,0.4);
-      box-shadow: 0 0 10px rgba(0,255,200,0.6);
-      mix-blend-mode: difference;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease;
-      z-index: 9999;
-    }
-
     #scrollTopBtn {
       position: fixed;
       bottom: 30px;
@@ -98,20 +83,17 @@
       }
     }
 
-    /* Ensure Back to Portfolio link is clickable */
     a {
       position: relative;
       z-index: 100;
       pointer-events: all;
     }
-
   </style>
 </head>
 <body class="font-[Inter] bg-gray-900 text-white font-sans min-h-screen p-6 relative overflow-x-hidden">
 
   <!-- Background shapes -->
   <div class="floating-bg"></div>
-  <div class="cursor-effect" id="cursor"></div>
 
   <!-- Back Button -->
   <a href="index.html" class="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors mb-4">
@@ -177,12 +159,6 @@
   <script>AOS.init({ duration: 1000, once: true });</script>
 
   <script>
-    const cursor = document.getElementById("cursor");
-    document.addEventListener("mousemove", e => {
-      cursor.style.top = e.clientY + "px";
-      cursor.style.left = e.clientX + "px";
-    });
-
     const scrollBtn = document.getElementById("scrollTopBtn");
     window.addEventListener("scroll", () => {
       if (window.scrollY > 300) {
