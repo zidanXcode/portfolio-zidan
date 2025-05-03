@@ -10,25 +10,10 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Kursor dengan warna lebih besar dan pudar seperti di Project Bot WhatsApp */
-    .cursor-glow {
-      pointer-events: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 20px;  /* Ukuran lebih normal */
-      height: 20px; /* Ukuran lebih normal */
-      border-radius: 50%;
-      background: rgba(0, 122, 255, 0.4); /* Warna biru lebih pudar */
-      box-shadow: 0 0 20px rgba(0, 122, 255, 0.6);
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-      transition: transform 0.05s ease;
-    }
-
-    /* Mencegah teks atau elemen lainnya disalin */
+    /* Mencegah teks atau elemen lainnya disalin dan set kursor default */
     body {
-      user-select: none;  /* Mencegah salinan */
+      user-select: none;
+      cursor: default;
     }
 
     /* Glow header dengan animasi */
@@ -66,7 +51,7 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #1e3a8a; /* Biru gelap */
+      background-color: #1e3a8a;
       border-radius: 50%;
       padding: 12px;
       color: white;
@@ -74,32 +59,31 @@
       cursor: pointer;
       transition: all 0.3s ease;
       z-index: 1000;
-      box-shadow: 0 0 20px rgba(30, 58, 138, 0.7); /* Glow biru di belakang */
+      box-shadow: 0 0 20px rgba(30, 58, 138, 0.7);
     }
 
     #scrollBtn:hover {
-      background-color: #2563eb; /* Biru terang saat hover */
+      background-color: #2563eb;
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(37, 99, 235, 0.8); /* Glow saat hover */
+      box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
     }
 
     /* Footer tambahan ikon simbol <> */
     .footer-icons a {
-      font-size: 16px; /* Ukuran lebih kecil */
-      color: #3b82f6; /* Warna biru terang */
-      margin-right: 8px; /* Sedikit spasi dengan teks */
+      font-size: 16px;
+      color: #3b82f6;
+      margin-right: 8px;
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .footer-icons a:hover {
-      color: #06b6d4; /* Warna biru terang saat hover */
+      color: #06b6d4;
       transform: scale(1.2);
     }
 
-    /* Latar belakang footer yang menyesuaikan dengan latar belakang halaman */
     footer {
-      background: rgba(0, 0, 0, 0.7); /* Transparan dengan sedikit hitam */
-      backdrop-filter: blur(10px); /* Efek blur seperti latar belakang halaman */
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
     }
   </style>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
@@ -179,7 +163,6 @@
 
   <footer class="bg-gray-900 bg-opacity-70 backdrop-blur-lg text-center py-4 mt-12 text-sm text-gray-400">
     <div class="footer-icons flex justify-center items-center space-x-3 mx-6">
-      <!-- Ikon </> kecil dan berwarna biru di sebelah kiri teks footer -->
       <a href="#" class="text-2xl text-blue-400 hover:text-blue-500 transition-transform transform hover:scale-110">
         <i class="fas fa-code"></i>
       </a>
@@ -187,7 +170,6 @@
     </div>
   </footer>
 
-  <!-- Scroll up button -->
   <button id="scrollBtn" class="scroll-top fixed bottom-6 right-6 w-12 h-12 rounded-full text-white flex items-center justify-center hidden transition transform hover:scale-110">
     <i class="fas fa-arrow-up"></i>
   </button>
@@ -195,16 +177,6 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
-
-    // Efek kursor yang lebih pudar dan warna biru
-    const cursorGlow = document.createElement("div");
-    cursorGlow.classList.add("cursor-glow");
-    document.body.appendChild(cursorGlow);
-
-    document.addEventListener("mousemove", (e) => {
-      cursorGlow.style.top = `${e.clientY}px`;
-      cursorGlow.style.left = `${e.clientX}px`;
-    });
 
     // Scroll button behavior
     const scrollBtn = document.getElementById('scrollBtn');
