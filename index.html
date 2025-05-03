@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zidan Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' }
   </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
-    /* Mencegah teks atau elemen lainnya disalin dan set kursor default */
     body {
       user-select: none;
       cursor: default;
     }
 
-    /* Glow header dengan animasi */
     .glow-header {
       background: linear-gradient(to right, #3b82f6, #06b6d4, #3b82f6);
       -webkit-background-clip: text;
@@ -29,7 +28,6 @@
       100% { background-position: 200% }
     }
 
-    /* Animasi teks untuk Hi Zidan dan About Me */
     .fadeInUp {
       animation: fadeInUp 1s ease-out forwards;
     }
@@ -45,7 +43,12 @@
       }
     }
 
-    /* Tombol scroll-up dengan efek glow biru */
+    .text-gradient {
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
     #scrollBtn {
       display: none;
       position: fixed;
@@ -57,7 +60,7 @@
       color: white;
       font-size: 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: opacity 0.3s ease, transform 0.3s ease;
       z-index: 1000;
       box-shadow: 0 0 20px rgba(30, 58, 138, 0.7);
     }
@@ -68,44 +71,60 @@
       box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
     }
 
-    /* Footer tambahan ikon simbol <> */
-    .footer-icons a {
-      font-size: 16px;
+    /* Styling for footer icon to match text size */
+    .footer-icon {
+      font-size: 1.125rem; /* Adjusted to match text size */
+      transition: transform 0.3s ease;
+    }
+
+    .footer-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .intro-text {
+      line-height: 1.8;
+      font-size: 1.125rem;
+      color: #d1d5db;
+    }
+
+    .about-text {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+      color: #d1d5db;
+    }
+
+    .highlight {
       color: #3b82f6;
-      margin-right: 8px;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .footer-icons a:hover {
-      color: #06b6d4;
-      transform: scale(1.2);
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
     }
   </style>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body class="bg-gray-900 text-white min-h-screen transition-all duration-500">
   <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md flex items-center px-6 py-4 shadow-md">
-    <h1 class="text-2xl md:text-3xl font-extrabold glow-header animate-pulse transition duration-500 transform hover:scale-105">
+    <h1 class="text-xl md:text-2xl font-extrabold glow-header animate-pulse transition duration-500 transform hover:scale-105 tracking-wide leading-tight text-gradient">
       Zidan | Full Stack Developer
     </h1>
   </nav>
 
   <main class="pt-24 px-6 max-w-5xl mx-auto space-y-20">
-    <section class="text-center" data-aos="fade-up" class="fadeInUp">
-      <h2 class="text-4xl font-bold mb-2">Hi, I'm Zidan</h2>
-      <p class="text-lg text-gray-300">Web Developer & Software Engineer passionate about elegant, scalable solutions.</p>
+    <!-- Hi I'm Zidan -->
+    <section class="text-center fadeInUp space-y-4" data-aos="fade-up">
+      <h2 class="text-4xl font-extrabold mb-2 text-gradient">Hi, I'm Zidan 👋</h2>
+      <p class="intro-text">
+        Full Stack Developer yang berfokus pada aplikasi web interaktif dan responsif. Senang mengeksplorasi teknologi baru dan menciptakan pengalaman digital yang menyenangkan.
+      </p>
     </section>
 
-    <section class="text-center fadeInUp" data-aos="fade-up">
-      <h2 class="text-2xl font-bold mb-4">About Me</h2>
-      <p class="max-w-2xl mx-auto text-gray-300">I specialize in creating web applications and systems that are efficient, scalable, and user-friendly. I love working with JavaScript, Node.js, and modern front-end frameworks.</p>
+    <!-- About Me -->
+    <section class="text-center fadeInUp space-y-4" data-aos="fade-up">
+      <h2 class="text-2xl font-bold mb-4 text-gradient">About Me</h2>
+      <p class="about-text">
+        Menguasai frontend dan backend dengan pengalaman menggunakan JavaScript, React, Node.js, dan database seperti MongoDB. Terus belajar untuk menciptakan aplikasi yang efisien dan mudah digunakan.
+      </p>
     </section>
 
+    <!-- Skills -->
     <section data-aos="fade-up">
       <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
       <div class="grid md:grid-cols-2 gap-6">
@@ -136,6 +155,7 @@
       </div>
     </section>
 
+    <!-- My Projects -->
     <section data-aos="fade-up">
       <h2 class="text-2xl font-bold mb-4 text-center">My Projects</h2>
       <div class="grid md:grid-cols-2 gap-6">
@@ -150,6 +170,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section data-aos="fade-up">
       <h2 class="text-2xl font-bold mb-4">Contact</h2>
       <form class="space-y-4">
@@ -161,9 +182,10 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="bg-gray-900 bg-opacity-70 backdrop-blur-lg text-center py-4 mt-12 text-sm text-gray-400">
     <div class="footer-icons flex justify-center items-center space-x-3 mx-6">
-      <a href="#" class="text-2xl text-blue-400 hover:text-blue-500 transition-transform transform hover:scale-110">
+      <a href="#" class="footer-icon text-blue-400 hover:text-blue-500">
         <i class="fas fa-code"></i>
       </a>
       <p class="text-gray-400">© 2025 Zidan. All rights reserved.</p>
@@ -178,16 +200,24 @@
   <script>
     AOS.init({ duration: 800, once: true });
 
-    // Scroll button behavior
     const scrollBtn = document.getElementById('scrollBtn');
     window.addEventListener('scroll', () => {
-      scrollBtn.style.display = window.scrollY > 100 ? 'flex' : 'none';
+      if (window.scrollY > 100) {
+        scrollBtn.style.display = 'flex';
+        scrollBtn.style.opacity = 1;
+      } else {
+        scrollBtn.style.opacity = 0;
+        setTimeout(() => {
+          if (window.scrollY <= 100) {
+            scrollBtn.style.display = 'none';
+          }
+        }, 300); // Delay to match fade-out duration
+      }
     });
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Mencegah salinan
     document.addEventListener('copy', (e) => {
       e.preventDefault();
       alert("Sorry, copying is disabled on this page.");
