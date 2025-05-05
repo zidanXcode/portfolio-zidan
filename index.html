@@ -14,10 +14,11 @@
     body {
       user-select: none;
       cursor: default;
+      background-attachment: fixed;
     }
 
     .glow-header {
-      background: linear-gradient(to right, #3b82f6, #06b6d4, #3b82f6);
+      background: linear-gradient(to right, #9333ea, #ec4899, #9333ea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glowText 5s linear infinite;
@@ -28,23 +29,8 @@
       100% { background-position: 200% }
     }
 
-    .fadeInUp {
-      animation: fadeInUp 1s ease-out forwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
     .text-gradient {
-      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      background: linear-gradient(90deg, #9333ea, #ec4899);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -54,173 +40,202 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #1e3a8a;
       border-radius: 50%;
       padding: 12px;
       color: white;
       font-size: 20px;
       cursor: pointer;
-      transition: opacity 0.3s ease, transform 0.3s ease;
       z-index: 1000;
-      box-shadow: 0 0 20px rgba(30, 58, 138, 0.7);
+      background: linear-gradient(135deg, #f43f5e, #8b5cf6, #22d3ee);
+      background-size: 400% 400%;
+      animation: rgbGlow 5s ease infinite;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
     }
 
     #scrollBtn:hover {
-      background-color: #2563eb;
       transform: scale(1.1);
-      box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
     }
 
-    /* Styling for footer icon to match text size */
-    .footer-icon {
-      font-size: 1.125rem; /* Adjusted to match text size */
+    @keyframes rgbGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .hover-card {
+      transition: all 0.3s ease;
+    }
+
+    .hover-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .pulse-btn {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .icon-hover {
       transition: transform 0.3s ease;
     }
 
-    .footer-icon:hover {
-      transform: scale(1.1);
+    .icon-hover:hover {
+      transform: scale(1.2);
     }
 
-    .intro-text {
-      line-height: 1.8;
-      font-size: 1.125rem;
-      color: #d1d5db;
-    }
-
-    .about-text {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto;
-      font-size: 1.125rem;
-      color: #d1d5db;
-    }
-
-    .highlight {
-      color: #3b82f6;
+    #particles {
+      background: radial-gradient(ellipse at bottom, #1e293b 0%, #0f172a 100%);
+      pointer-events: none;
     }
   </style>
 </head>
 <body class="bg-gray-900 text-white min-h-screen transition-all duration-500">
+  <!-- Particle Container -->
+  <div id="particles" class="fixed top-0 left-0 w-full h-full -z-10"></div>
+
   <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-md flex items-center px-6 py-4 shadow-md">
-    <h1 class="text-xl md:text-2xl font-extrabold glow-header animate-pulse transition duration-500 transform hover:scale-105 tracking-wide leading-tight text-gradient">
-      Zidan | Full Stack Developer
-    </h1>
+    <h1 class="text-xl md:text-2xl font-extrabold glow-header animate-pulse tracking-wide">Zidan | Full Stack Developer</h1>
   </nav>
 
   <main class="pt-24 px-6 max-w-5xl mx-auto space-y-20">
-    <!-- Hi I'm Zidan -->
-    <section class="text-center fadeInUp space-y-4" data-aos="fade-up">
+    <!-- Hero -->
+    <section class="text-center space-y-4" data-aos="fade-up" style="background-attachment: fixed;">
       <h2 class="text-4xl font-extrabold mb-2 text-gradient">Hi, I'm Zidan 👋</h2>
-      <p class="intro-text">
-        Full Stack Developer yang berfokus pada aplikasi web interaktif dan responsif. Senang mengeksplorasi teknologi baru dan menciptakan pengalaman digital yang menyenangkan.
-      </p>
+      <p class="text-lg text-gray-300">Full Stack Developer berpengalaman dengan fokus pada aplikasi web interaktif dan responsif.</p>
     </section>
 
-    <!-- About Me -->
-    <section class="text-center fadeInUp space-y-4" data-aos="fade-up">
+    <!-- About -->
+    <section class="text-center space-y-4" data-aos="fade-up">
       <h2 class="text-2xl font-bold mb-4 text-gradient">About Me</h2>
-      <p class="about-text">
-        Menguasai frontend dan backend dengan pengalaman menggunakan JavaScript, React, Node.js, dan database seperti MongoDB. Terus belajar untuk menciptakan aplikasi yang efisien dan mudah digunakan.
-      </p>
+      <p class="max-w-xl mx-auto text-gray-300">Menguasai frontend dan backend dengan JavaScript, React, Node.js, dan database seperti MongoDB.</p>
+      <a href="#contact" class="inline-block mt-4 px-6 py-3 bg-purple-600 rounded-full text-white font-semibold pulse-btn hover:bg-purple-700 transition">Hire Me</a>
     </section>
 
     <!-- Skills -->
-    <section data-aos="fade-up">
-      <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="transition hover:scale-105">
-          <p><i class="fab fa-html5 text-orange-600 mr-2"></i>HTML & CSS</p>
-          <div class="bg-gray-700 rounded-full h-3 mt-1">
-            <div class="bg-blue-500 h-3 rounded-full" style="width: 95%"></div>
-          </div>
-        </div>
-        <div class="transition hover:scale-105">
-          <p><i class="fab fa-js text-yellow-400 mr-2"></i>JavaScript</p>
-          <div class="bg-gray-700 rounded-full h-3 mt-1">
-            <div class="bg-blue-500 h-3 rounded-full" style="width: 90%"></div>
-          </div>
-        </div>
-        <div class="transition hover:scale-105">
-          <p><i class="fab fa-react text-cyan-400 mr-2"></i>React & Node.js</p>
-          <div class="bg-gray-700 rounded-full h-3 mt-1">
-            <div class="bg-blue-500 h-3 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="transition hover:scale-105">
-          <p><i class="fas fa-database text-green-500 mr-2"></i>Database (MongoDB, MySQL)</p>
-          <div class="bg-gray-700 rounded-full h-3 mt-1">
-            <div class="bg-blue-500 h-3 rounded-full" style="width: 80%"></div>
-          </div>
-        </div>
+<section data-aos="fade-up">
+  <h2 class="text-2xl font-bold mb-4 text-center">Skills</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div>
+      <div class="flex justify-between items-center">
+        <p><i class="fab fa-html5 text-orange-500 mr-2"></i>HTML & CSS</p>
+        <span class="text-sm text-gray-400">95%</span>
       </div>
-    </section>
+      <div class="bg-gray-700 h-3 rounded-full mt-1">
+        <div class="bg-purple-500 h-3 rounded-full" style="width: 95%"></div>
+      </div>
+    </div>
+    <div>
+      <div class="flex justify-between items-center">
+        <p><i class="fab fa-js text-yellow-300 mr-2"></i>JavaScript</p>
+        <span class="text-sm text-gray-400">90%</span>
+      </div>
+      <div class="bg-gray-700 h-3 rounded-full mt-1">
+        <div class="bg-pink-500 h-3 rounded-full" style="width: 90%"></div>
+      </div>
+    </div>
+    <div>
+      <div class="flex justify-between items-center">
+        <p><i class="fab fa-react text-cyan-400 mr-2"></i>React & Node.js</p>
+        <span class="text-sm text-gray-400">85%</span>
+      </div>
+      <div class="bg-gray-700 h-3 rounded-full mt-1">
+        <div class="bg-fuchsia-500 h-3 rounded-full" style="width: 85%"></div>
+      </div>
+    </div>
+    <div>
+      <div class="flex justify-between items-center">
+        <p><i class="fas fa-database text-green-500 mr-2"></i>Database (MongoDB, MySQL)</p>
+        <span class="text-sm text-gray-400">80%</span>
+      </div>
+      <div class="bg-gray-700 h-3 rounded-full mt-1">
+        <div class="bg-indigo-500 h-3 rounded-full" style="width: 80%"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- My Projects -->
+    <!-- Projects -->
     <section data-aos="fade-up">
       <h2 class="text-2xl font-bold mb-4 text-center">My Projects</h2>
       <div class="grid md:grid-cols-2 gap-6">
-        <a href="project-one.html" class="bg-gray-800 rounded shadow p-4 hover:-translate-y-1 hover:shadow-lg transition transform block">
-          <h3 class="font-semibold text-lg mb-2 text-blue-400">Project One</h3>
+        <a href="#" class="bg-gray-800 rounded shadow p-4 hover-card block">
+          <h3 class="font-semibold text-lg mb-2 text-purple-400">Project One</h3>
           <p class="text-gray-300 text-sm">Bot WhatsApp berbasis JavaScript untuk otomatisasi pesan.</p>
         </a>
-        <a href="project-two.html" class="bg-gray-800 rounded shadow p-4 hover:-translate-y-1 hover:shadow-lg transition transform block">
-          <h3 class="font-semibold text-lg mb-2 text-blue-400">Project Two</h3>
+        <a href="#" class="bg-gray-800 rounded shadow p-4 hover-card block">
+          <h3 class="font-semibold text-lg mb-2 text-purple-400">Project Two</h3>
           <p class="text-gray-300 text-sm">Website dengan UI/UX modern pakai HTML, CSS, Tailwind, dan JS.</p>
         </a>
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Testimonials -->
     <section data-aos="fade-up">
-      <h2 class="text-2xl font-bold mb-4">Contact</h2>
-      <form class="space-y-4">
-        <input type="text" placeholder="Name" required class="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white">
-        <input type="email" placeholder="Email" required class="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white">
-        <textarea placeholder="Message" rows="4" required class="w-full px-4 py-2 rounded bg-gray-800 border border-gray-700 text-white"></textarea>
-        <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition transform hover:scale-105">Send</button>
-      </form>
+      <h2 class="text-2xl font-bold mb-4 text-center">Testimonials</h2>
+      <div class="bg-gray-800 p-6 rounded shadow text-center">
+        <p class="italic text-gray-300">"Zidan adalah developer yang luar biasa, cepat tanggap dan hasil kerjanya rapi!"</p>
+        <span class="block mt-2 text-sm text-purple-400">— Klien Proyek Bot WhatsApp</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section data-aos="fade-up" id="contact">
+      <h2 class="text-2xl font-bold mb-4 text-center">Contact</h2>
+      <div class="flex justify-center space-x-6 mt-6">
+        <a href="https://wa.me/6281936051615" target="_blank" class="text-green-400 icon-hover text-3xl"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://github.com/zidanXcode" target="_blank" class="text-gray-400 icon-hover text-3xl"><i class="fab fa-github"></i></a>
+      </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 bg-opacity-70 backdrop-blur-lg text-center py-4 mt-12 text-sm text-gray-400">
-    <div class="footer-icons flex justify-center items-center space-x-3 mx-6">
-      <a href="#" class="footer-icon text-blue-400 hover:text-blue-500">
-        <i class="fas fa-code"></i>
-      </a>
-      <p class="text-gray-400">© 2025 Zidan. All rights reserved.</p>
-    </div>
+  <footer class="bg-transparent text-center py-4 mt-12 text-sm text-gray-400">
+    <p>© 2025 Zidan. All rights reserved.</p>
   </footer>
 
-  <button id="scrollBtn" class="scroll-top fixed bottom-6 right-6 w-12 h-12 rounded-full text-white flex items-center justify-center hidden transition transform hover:scale-110">
+  <button id="scrollBtn" class="fixed bottom-6 right-6 w-14 h-14 rounded-full text-white flex items-center justify-center transition">
     <i class="fas fa-arrow-up"></i>
   </button>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
 
     const scrollBtn = document.getElementById('scrollBtn');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        scrollBtn.style.display = 'flex';
-        scrollBtn.style.opacity = 1;
-      } else {
-        scrollBtn.style.opacity = 0;
-        setTimeout(() => {
-          if (window.scrollY <= 100) {
-            scrollBtn.style.display = 'none';
-          }
-        }, 300); // Delay to match fade-out duration
-      }
+      scrollBtn.style.display = window.scrollY > 100 ? 'flex' : 'none';
     });
+
     scrollBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    document.addEventListener('copy', (e) => {
-      e.preventDefault();
-      alert("Sorry, copying is disabled on this page.");
+    tsParticles.load("particles", {
+      fullScreen: { enable: false },
+      background: { color: "transparent" },
+      particles: {
+        number: { value: 60 },
+        color: { value: ["#9333ea", "#ec4899", "#22d3ee"] },
+        shape: { type: "circle" },
+        opacity: { value: 0.4 },
+        size: { value: { min: 1, max: 3 } },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: "none",
+          outModes: { default: "out" }
+        }
+      },
+      interactivity: {
+        events: { onHover: { enable: true, mode: "repulse" } },
+        modes: { repulse: { distance: 80 } }
+      }
     });
   </script>
 </body>
